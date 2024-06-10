@@ -29,6 +29,9 @@ with GestureRecognizer.create_from_options(options) as recognizer:
     hand_landmarks = gesture_recognition_result.hand_landmarks
     new_image = cv2.imread("1.jpg", cv2.IMREAD_UNCHANGED)
 
+    gestures = gesture_recognition_result.gestures[0][0]
+    title = f"{gestures.category_name} ({gestures.score:.2f})"
+    print(title)
 
     for hand_landmarks_ in hand_landmarks:
         hand_landmarks_proto = landmark_pb2.NormalizedLandmarkList()
